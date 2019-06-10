@@ -1,0 +1,4 @@
+include "cj.netos.silvermarket.program"
+include "cj.netos.silvermarket.main"
+include "cj.netos.silvermarket.plugin.MarketEngine"
+include "cj.netos.silvermarket.stub"
