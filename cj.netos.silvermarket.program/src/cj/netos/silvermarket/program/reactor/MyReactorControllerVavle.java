@@ -2,7 +2,6 @@ package cj.netos.silvermarket.program.reactor;
 
 import java.util.Map;
 
-import cj.studio.ecm.EcmException;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.util.reactor.Event;
 import cj.studio.util.reactor.IPipeline;
@@ -18,7 +17,7 @@ public class MyReactorControllerVavle implements IValve {
 	public void flow(Event e, IPipeline pipeline) throws CircuitException {
 		IValve valve=valves.get(e.getCmd());
 		if(valve==null) {
-			throw new EcmException("不存在valve:"+e.getCmd());
+			throw new CircuitException("404","不存在valve:"+e.getCmd());
 		}
 		valve.flow(e, pipeline);
 	}

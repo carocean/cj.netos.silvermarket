@@ -17,9 +17,9 @@ import cj.ultimate.util.StringUtil;
 @CjService(name = "fSBankStateVavle", scope = Scope.multiton)
 public class BDMarketStateVavle implements IAnnotationInputValve {
 
-	@CjServiceRef(refByName = "BDBKEngine.marketStateBS")
+	@CjServiceRef(refByName = "MarketEngine.marketStateBS")
 	IMarketStateBS marketStateBS;
-	@CjServiceRef(refByName = "BDBKEngine.marketInfoBS")
+	@CjServiceRef(refByName = "MarketEngine.marketInfoBS")
 	IMarketInfoBS marketInfoBS;
 
 	@Override
