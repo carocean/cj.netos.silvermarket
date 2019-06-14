@@ -9,7 +9,7 @@ public class BuyOrderStock {
 	String buyorderno;
 	String buyer;
 	BigDecimal amount;
-	BigDecimal stockPrice;
+	BigDecimal buyingPrice;
 	long otime;//委托买入时间
 	public BuyOrderStock() {
 	}
@@ -18,13 +18,13 @@ public class BuyOrderStock {
 		this.buyer=order.buyer;
 		this.amount=order.amount;
 		this.otime=order.otime;
-		this.stockPrice=order.stockPrice;
+		this.buyingPrice=order.buyingPrice;
 	}
-	public BigDecimal getStockPrice() {
-		return stockPrice;
+	public BigDecimal getBuyingPrice() {
+		return buyingPrice;
 	}
-	public void setStockPrice(BigDecimal stockPrice) {
-		this.stockPrice = stockPrice;
+	public void setBuyingPrice(BigDecimal buyingPrice) {
+		this.buyingPrice = buyingPrice;
 	}
 	public String getNo() {
 		return no;

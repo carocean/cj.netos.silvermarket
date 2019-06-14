@@ -12,12 +12,12 @@ public class BuyOrder {
 	String buyer;
 	BigDecimal amount;
 	long otime;//委托买入时间
-	BigDecimal stockPrice;//用于申购的报价：一般指最高买入价
-	public BigDecimal getStockPrice() {
-		return stockPrice;
+	BigDecimal buyingPrice;//用于申购的报价：一般指最高买入价
+	public BigDecimal getBuyingPrice() {
+		return buyingPrice;
 	}
-	public void setStockPrice(BigDecimal stockPrice) {
-		this.stockPrice = stockPrice;
+	public void setBuyingPrice(BigDecimal buyingPrice) {
+		this.buyingPrice = buyingPrice;
 	}
 	public String getNo() {
 		return no;

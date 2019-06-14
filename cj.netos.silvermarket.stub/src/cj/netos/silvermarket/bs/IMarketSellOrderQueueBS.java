@@ -1,5 +1,7 @@
 package cj.netos.silvermarket.bs;
 
+import java.util.List;
+
 import cj.netos.silvermarket.args.SellOrderStock;
 import cj.netos.silvermarket.args.Stock;
 
@@ -14,8 +16,9 @@ public interface IMarketSellOrderQueueBS {
 
 	void remove(String market, String stockno);
 
-	SellOrderStock addStock(String market, String stockno, Stock stock);
+	void updateStocks(String market, String stockno, List<Stock> stocks);
 
-	SellOrderStock decAmount(String market, String stockno, Stock stock);
+	List<SellOrderStock> listFiveSellingWindow(String market);
 
+	
 }

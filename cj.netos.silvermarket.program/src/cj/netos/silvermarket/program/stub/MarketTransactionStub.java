@@ -1,6 +1,7 @@
 package cj.netos.silvermarket.program.stub;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import cj.netos.silvermarket.args.Stock;
 import cj.netos.silvermarket.stub.IMarketTransactionStub;
@@ -48,22 +49,22 @@ public class MarketTransactionStub extends GatewayAppSiteRestStub implements IMa
 	}
 
 	@Override
-	public void sellOrder(String market, String seller, Stock stock, String informAddress) {
+	public void sellOrder(String market, String seller, List<Stock> stocks, String informAddress) {
 		IReactor reactor = getReactor();
 		Event e = new Event(market, "transaction.sellOrder");
 		e.getParameters().put("informAddress", informAddress);
 		e.getParameters().put("seller", seller);
-		e.getParameters().put("stock", stock);
+		e.getParameters().put("stocks", stocks);
 		reactor.input(e);
 	}
 
 	@Override
-	public void exchangeOrder(String market, String buyer, Stock stock, String informAddress) {
+	public void exchangeOrder(String market, String buyer, List<Stock> stocks, String informAddress) {
 		IReactor reactor = getReactor();
 		Event e = new Event(market, "transaction.exchangeOrder");
 		e.getParameters().put("informAddress", informAddress);
 		e.getParameters().put("buyer", buyer);
-		e.getParameters().put("stock", stock);
+		e.getParameters().put("stocks", stocks);
 		reactor.input(e);
 	}
 	@Override

@@ -1,14 +1,15 @@
 package cj.netos.silvermarket.args;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 //委托卖出流水单
 public class SellOrder {
 	String orderno;
 	String seller;
-	Stock stock;
+	List<Stock> stocks;
 	long ctime;
-	BigDecimal stockPrice;// 想要卖出的帑价，一般是不低于此价
+	BigDecimal sellingPrice;// 想要卖出的帑价，一般是不低于此价
 	
 	public String getOrderno() {
 		return orderno;
@@ -26,12 +27,11 @@ public class SellOrder {
 		this.seller = seller;
 	}
 
-	public Stock getStock() {
-		return stock;
+	public List<Stock> getStocks() {
+		return stocks;
 	}
-
-	public void setStock(Stock stock) {
-		this.stock = stock;
+	public void setStocks(List<Stock> stocks) {
+		this.stocks = stocks;
 	}
 
 	public long getCtime() {
@@ -42,12 +42,12 @@ public class SellOrder {
 		this.ctime = ctime;
 	}
 
-	public BigDecimal getStockPrice() {
-		return stockPrice;
+	public BigDecimal getSellingPrice() {
+		return sellingPrice;
 	}
 
-	public void setStockPrice(BigDecimal stockPrice) {
-		this.stockPrice = stockPrice;
+	public void setSellingPrice(BigDecimal sellingPrice) {
+		this.sellingPrice = sellingPrice;
 	}
 
 }

@@ -1,6 +1,7 @@
 package cj.netos.silvermarket.bs;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import cj.netos.silvermarket.args.BuyOrderStock;
 
@@ -15,7 +16,7 @@ public interface IMarketBuyOrderQueueBS {
 
 	void remove(String market, String stockno);
 
-	BigDecimal addAmount(String market, String stockno, BigDecimal amount);
+	void updateAmount(String market, String stockno, BigDecimal amount);
 
-	BigDecimal decAmount(String market, String stockno, BigDecimal amount);
+	List<BuyOrderStock> listFiveBuyingWindow(String market);
 }

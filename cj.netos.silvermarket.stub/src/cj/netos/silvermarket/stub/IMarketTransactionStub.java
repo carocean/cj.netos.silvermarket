@@ -1,6 +1,8 @@
 package cj.netos.silvermarket.stub;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import cj.netos.silvermarket.args.Stock;
 import cj.studio.gateway.stub.annotation.CjStubInContentKey;
@@ -29,15 +31,15 @@ public interface IMarketTransactionStub {
 			@CjStubInParameter(key = "amount", usage = "申购金额") BigDecimal amount,
 			@CjStubInParameter(key = "informAddress", usage = "回调通知地址") String informAddress);
 
-	@CjStubMethod(command = "post",usage = "委托卖出")
+	@CjStubMethod(command = "post", usage = "委托卖出")
 	void sellOrder(@CjStubInParameter(key = "market", usage = "市场编号") String market,
 			@CjStubInParameter(key = "seller", usage = "委托卖方") String seller,
-			@CjStubInContentKey(key = "stock", usage = "要卖出的帑银") Stock stock,
+			@CjStubInContentKey(key = "stocks", elementType = Stock.class, type = ArrayList.class, usage = "要卖出的帑银") List<Stock> stocks,
 			@CjStubInParameter(key = "informAddress", usage = "回调通知地址") String informAddress);
 
-	@CjStubMethod(command = "post",usage = "委托承兑")
+	@CjStubMethod(command = "post", usage = "委托承兑")
 	void exchangeOrder(@CjStubInParameter(key = "market", usage = "市场编号") String market,
 			@CjStubInParameter(key = "buyer", usage = "委托买方") String buyer,
-			@CjStubInContentKey(key = "stock", usage = "要承兑的帑银") Stock stock,
+			@CjStubInContentKey(key = "stocks", elementType = Stock.class, type = ArrayList.class, usage = "要承兑的帑银") List<Stock> stocks,
 			@CjStubInParameter(key = "informAddress", usage = "回调通知地址") String informAddress);
 }

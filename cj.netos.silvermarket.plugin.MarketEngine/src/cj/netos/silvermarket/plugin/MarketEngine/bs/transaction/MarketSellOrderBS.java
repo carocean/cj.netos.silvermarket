@@ -2,6 +2,7 @@ package cj.netos.silvermarket.plugin.MarketEngine.bs.transaction;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cj.lns.chip.sos.cube.framework.TupleDocument;
@@ -27,14 +28,14 @@ public class MarketSellOrderBS implements IMarketSellOrderBS {
 
 	// 增加委托卖单流水，同时发给卖方队列
 	@Override
-	public Map<String, Object> sellOrder(String market, String seller, Stock stock) {
+	public Map<String, Object> sellOrder(String market, String seller, List<Stock> stocks) {
 		SellOrder order = new SellOrder();
 		order.setCtime(System.currentTimeMillis());
 		order.setSeller(seller);
-		order.setStock(stock);
+		order.setStocks(stocks);
 
 		BigDecimal stockPrice = marketBalanceBS.getStockPrice(market);
-		order.setStockPrice(stockPrice);
+		order.setSellingPrice(stockPrice);
 
 		String orderno = marketStore.market(market).saveDoc(TABLE_sellorders, new TupleDocument<>(order));
 		order.setOrderno(orderno);

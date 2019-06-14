@@ -8,12 +8,12 @@
 			
 		],		
 		activators : [
-		{
-			name:'反应器',
-			class:'cj.netos.silvermarket.program.ReactorEntrypointActivitor',
-			parameters:{
-				}
-		}
+			{
+				name:'反应器',
+				class:'cj.netos.silvermarket.program.ReactorEntrypointActivitor',
+				parameters:{
+					}
+			}
 		]
 	},
 	assemblyInfo : {

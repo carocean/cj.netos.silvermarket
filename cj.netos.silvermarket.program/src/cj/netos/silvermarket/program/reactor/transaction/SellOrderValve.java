@@ -1,5 +1,6 @@
 package cj.netos.silvermarket.program.reactor.transaction;
 
+import java.util.List;
 import java.util.Map;
 
 import cj.netos.inform.Informer;
@@ -30,8 +31,9 @@ public class SellOrderValve implements IValve {
 	public void flow(Event e, IPipeline pipeline) throws CircuitException {
 		String seller = (String) e.getParameters().get("seller");
 		String informAddress = (String) e.getParameters().get("informAddress");
-		Stock stock = (Stock) e.getParameters().get("stock");
-		Map<String, Object> map = marketSellOrderBS.sellOrder(e.getKey(), seller, stock);
+		@SuppressWarnings("unchecked")
+		List<Stock> stocks = (List<Stock>) e.getParameters().get("stocks");
+		Map<String, Object> map = marketSellOrderBS.sellOrder(e.getKey(), seller, stocks);
 		if (!StringUtil.isEmpty(informAddress)) {
 			Frame f = informer.createFrame(informAddress, map);
 			MemoryOutputChannel oc = new MemoryOutputChannel();

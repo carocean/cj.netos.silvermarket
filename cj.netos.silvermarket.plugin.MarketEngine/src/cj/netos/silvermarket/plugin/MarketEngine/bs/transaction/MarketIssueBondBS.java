@@ -1,7 +1,9 @@
 package cj.netos.silvermarket.plugin.MarketEngine.bs.transaction;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.bson.Document;
@@ -82,7 +84,9 @@ public class MarketIssueBondBS implements IMarketIssueBondBS, BigDecimalConstant
 		this.marketBalanceBS.addStockQuantitiesBalance(market, bondbank, stockQuantities);
 		
 		Stock stock=new Stock(bill.getIssueno(),stockQuantities);
-		Map<String,Object> result=marketSellOrderBS.sellOrder(market, issuer, stock);
+		List<Stock> stocks=new ArrayList<Stock>();
+		stocks.add(stock);
+		Map<String,Object> result=marketSellOrderBS.sellOrder(market, issuer, stocks);
 		SellOrder sellorder=(SellOrder)result.get("order");
 		bill.setSellOrderno(sellorder.getOrderno());
 		
