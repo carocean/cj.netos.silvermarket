@@ -26,6 +26,7 @@ import cj.netos.silvermarket.plugin.MarketEngine.db.IMarketStore;
 import cj.netos.silvermarket.util.BigDecimalConstants;
 import cj.studio.ecm.annotation.CjService;
 import cj.studio.ecm.annotation.CjServiceRef;
+import cj.studio.ecm.net.CircuitException;
 
 @CjService(name = "transaction#issueOrderBS")
 public class MarketIssueBondBS implements IMarketIssueBondBS, BigDecimalConstants {
@@ -41,7 +42,7 @@ public class MarketIssueBondBS implements IMarketIssueBondBS, BigDecimalConstant
 	IMarketSellOrderBS marketSellOrderBS;
 	@Override
 	public Map<String, Object> issueOrder(String market, String issuer, String bondbank, BigDecimal bondQuantities,
-			BigDecimal bondFaceValue) {
+			BigDecimal bondFaceValue) throws CircuitException {
 		IssueBill bill = new IssueBill();
 		bill.setBondBank(bondbank);
 		bill.setBondFaceValue(bondFaceValue);
@@ -86,7 +87,7 @@ public class MarketIssueBondBS implements IMarketIssueBondBS, BigDecimalConstant
 		Stock stock=new Stock(bill.getIssueno(),stockQuantities);
 		List<Stock> stocks=new ArrayList<Stock>();
 		stocks.add(stock);
-		Map<String,Object> result=marketSellOrderBS.sellOrder(market, issuer, stocks);
+		Map<String,Object> result=marketSellOrderBS.sellOrder(market, issuer, stocks,stockprice);
 		SellOrder sellorder=(SellOrder)result.get("order");
 		bill.setSellOrderno(sellorder.getOrderno());
 		

@@ -39,22 +39,24 @@ public class MarketTransactionStub extends GatewayAppSiteRestStub implements IMa
 	}
 
 	@Override
-	public void buyOrder(String market, String buyer, BigDecimal amount, String informAddress) {
+	public void buyOrder(String market, String buyer, BigDecimal amount,BigDecimal buyingPrice, String informAddress) {
 		IReactor reactor = getReactor();
 		Event e = new Event(market, "transaction.buyOrder");
 		e.getParameters().put("informAddress", informAddress);
 		e.getParameters().put("buyer", buyer);
 		e.getParameters().put("amount", amount);
+		e.getParameters().put("buyingPrice", buyingPrice);
 		reactor.input(e);
 	}
 
 	@Override
-	public void sellOrder(String market, String seller, List<Stock> stocks, String informAddress) {
+	public void sellOrder(String market, String seller, List<Stock> stocks,BigDecimal sellingPrice, String informAddress) {
 		IReactor reactor = getReactor();
 		Event e = new Event(market, "transaction.sellOrder");
 		e.getParameters().put("informAddress", informAddress);
 		e.getParameters().put("seller", seller);
 		e.getParameters().put("stocks", stocks);
+		e.getParameters().put("sellingPrice", sellingPrice);
 		reactor.input(e);
 	}
 

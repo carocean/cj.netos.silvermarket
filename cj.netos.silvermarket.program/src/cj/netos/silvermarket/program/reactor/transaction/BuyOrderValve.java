@@ -17,7 +17,7 @@ import cj.studio.util.reactor.IPipeline;
 import cj.studio.util.reactor.IValve;
 import cj.ultimate.util.StringUtil;
 
-@CjService(name = "transaction.buyOrderValve")
+@CjService(name = "transaction.buyOrder")
 public class BuyOrderValve implements IValve {
 	@CjServiceRef
 	IMarketCacher marketCacher;
@@ -30,7 +30,8 @@ public class BuyOrderValve implements IValve {
 		String buyer = (String) e.getParameters().get("buyer");
 		String informAddress = (String) e.getParameters().get("informAddress");
 		BigDecimal amount = (BigDecimal) e.getParameters().get("amount");
-		Map<String, Object> map = marketBuyOrderBS.buyOrder(e.getKey(), buyer, amount);
+		BigDecimal buyingPrice = (BigDecimal) e.getParameters().get("buyingPrice");
+		Map<String, Object> map = marketBuyOrderBS.buyOrder(e.getKey(), buyer, amount,buyingPrice);
 		if (!StringUtil.isEmpty(informAddress)) {
 			Frame f = informer.createFrame(informAddress, map);
 			MemoryOutputChannel oc = new MemoryOutputChannel();

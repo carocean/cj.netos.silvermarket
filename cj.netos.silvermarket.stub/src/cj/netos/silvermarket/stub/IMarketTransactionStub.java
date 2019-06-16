@@ -29,12 +29,14 @@ public interface IMarketTransactionStub {
 	void buyOrder(@CjStubInParameter(key = "market", usage = "市场编号") String market,
 			@CjStubInParameter(key = "buyer", usage = "委托买方") String buyer,
 			@CjStubInParameter(key = "amount", usage = "申购金额") BigDecimal amount,
+			@CjStubInParameter(key = "buyingPrice", usage = "委托申购价格") BigDecimal buyingPrice,
 			@CjStubInParameter(key = "informAddress", usage = "回调通知地址") String informAddress);
 
 	@CjStubMethod(command = "post", usage = "委托卖出")
 	void sellOrder(@CjStubInParameter(key = "market", usage = "市场编号") String market,
 			@CjStubInParameter(key = "seller", usage = "委托卖方") String seller,
 			@CjStubInContentKey(key = "stocks", elementType = Stock.class, type = ArrayList.class, usage = "要卖出的帑银") List<Stock> stocks,
+			@CjStubInParameter(key = "sellingPrice", usage = "委托售价") BigDecimal sellingPrice,
 			@CjStubInParameter(key = "informAddress", usage = "回调通知地址") String informAddress);
 
 	@CjStubMethod(command = "post", usage = "委托承兑")

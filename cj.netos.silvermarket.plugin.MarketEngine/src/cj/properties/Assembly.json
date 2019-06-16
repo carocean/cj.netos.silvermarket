@@ -16,14 +16,6 @@
 			}
 		],		
 		activators : [
-			{
-					name:'撮合交易引擎',
-					class:'cj.netos.silvermarket.plugin.MarketEngine.DealmakingEntrypointActivitor',
-					parameters:{
-						"workThreads":"5",
-						"dealmakingStrategy":"cj.netos.silvermarket.plugin.MarketEngine.dealmaking.DefaultDealmakingStrategy"
-					}
-			}
 		]
 	},
 	assemblyInfo : {

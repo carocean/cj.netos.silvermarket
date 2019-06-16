@@ -19,7 +19,7 @@ public interface IMarketInfoBS {
 	MarketInfo getMarketInfo(String market);
 
 	List<MarketInfo> pageMarketInfo(int currPage, int pageSize);
-
+	
 	boolean existsMarketName(String name);
 
 	boolean existsMarketCode(String market);

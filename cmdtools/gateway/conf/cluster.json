@@ -1,1 +1,23 @@
-{"valids":[{"name":"market","uris":["app://silvermarket:way"],"props":{}}],"invalids":[]}
+{
+	"valids": [
+		{
+			"name": "market",
+			"uris": [
+				"app://silvermarket:way"
+			],
+			"props": {
+				
+			}
+		},
+		{
+			"name": "/backend/dealmaking/",
+			"uris": [
+				"http://localhost:11104?readTimeout=180000"
+			],
+			"props": {
+				
+			}
+		}
+	],
+	"invalids": []
+}

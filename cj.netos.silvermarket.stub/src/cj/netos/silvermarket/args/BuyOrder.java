@@ -13,6 +13,20 @@ public class BuyOrder {
 	BigDecimal amount;
 	long otime;//委托买入时间
 	BigDecimal buyingPrice;//用于申购的报价：一般指最高买入价
+	String status;
+	String message;
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public BigDecimal getBuyingPrice() {
 		return buyingPrice;
 	}

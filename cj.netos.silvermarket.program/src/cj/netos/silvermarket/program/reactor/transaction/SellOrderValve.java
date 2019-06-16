@@ -1,5 +1,6 @@
 package cj.netos.silvermarket.program.reactor.transaction;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,8 @@ public class SellOrderValve implements IValve {
 		String informAddress = (String) e.getParameters().get("informAddress");
 		@SuppressWarnings("unchecked")
 		List<Stock> stocks = (List<Stock>) e.getParameters().get("stocks");
-		Map<String, Object> map = marketSellOrderBS.sellOrder(e.getKey(), seller, stocks);
+		BigDecimal sellingPrice = (BigDecimal) e.getParameters().get("sellingPrice");
+		Map<String, Object> map = marketSellOrderBS.sellOrder(e.getKey(), seller, stocks, sellingPrice);
 		if (!StringUtil.isEmpty(informAddress)) {
 			Frame f = informer.createFrame(informAddress, map);
 			MemoryOutputChannel oc = new MemoryOutputChannel();
