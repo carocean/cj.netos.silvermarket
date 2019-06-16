@@ -15,8 +15,10 @@ import cj.netos.dealmaking.stub.IDealmakingQueueStub;
 import cj.netos.silvermarket.args.SellOrder;
 import cj.netos.silvermarket.args.Stock;
 import cj.netos.silvermarket.bs.IMarketBalanceBS;
+import cj.netos.silvermarket.bs.IMarketPropertiesBS;
 import cj.netos.silvermarket.bs.IMarketSellOrderBS;
 import cj.netos.silvermarket.plugin.MarketEngine.db.IMarketStore;
+import cj.netos.silvermarket.util.BigDecimalConstants;
 import cj.studio.ecm.CJSystem;
 import cj.studio.ecm.annotation.CjBridge;
 import cj.studio.ecm.annotation.CjService;
@@ -26,7 +28,7 @@ import cj.studio.gateway.stub.annotation.CjStubRef;
 
 @CjBridge(aspects = "@rest")
 @CjService(name = "transaction#marketSellOrderBS")
-public class MarketSellOrderBS implements IMarketSellOrderBS {
+public class MarketSellOrderBS implements IMarketSellOrderBS,BigDecimalConstants {
 	@CjServiceRef
 	IMarketStore marketStore;
 
@@ -34,7 +36,8 @@ public class MarketSellOrderBS implements IMarketSellOrderBS {
 	IMarketBalanceBS marketBalanceBS;
 	@CjStubRef(remote = "rest://backend/dealmaking/", stub = IDealmakingQueueStub.class)
 	IDealmakingQueueStub dealmakingQueueStub;
-
+	@CjServiceRef
+	IMarketPropertiesBS marketPropertiesBS;
 	// 增加委托卖单流水，同时发给卖方队列
 	@Override
 	public Map<String, Object> sellOrder(String market, String seller, List<Stock> stocks,BigDecimal sellingPrice) throws CircuitException {
@@ -52,6 +55,8 @@ public class MarketSellOrderBS implements IMarketSellOrderBS {
 		stock.setOtime(order.getCtime());
 		stock.setSeller(seller);
 		stock.setSellingPrice(order.getSellingPrice());
+		BigDecimal feeRate=defaultFreeRate(marketPropertiesBS, market);
+		stock.setFeeRate(feeRate);
 		List<cj.netos.dealmaking.args.Stock> list = new ArrayList<>();
 		for (Stock s : order.getStocks()) {
 			cj.netos.dealmaking.args.Stock ds = new cj.netos.dealmaking.args.Stock(s.getIssueno(), s.getQuantities());

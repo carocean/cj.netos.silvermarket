@@ -2,6 +2,7 @@ package cj.netos.silvermarket.args;
 
 public class MarketProperty {
 	public static final transient String CONSTANS_KEY_default_firstIssueBillOfMarket_multiplying_power = "default_firstIssueBillOfMarket_multiplying_power";
+	public static final transient String CONSTANS_KEY_default_freeRate = "default_freeRate";
 	String key;
 	String value;
 	String desc;

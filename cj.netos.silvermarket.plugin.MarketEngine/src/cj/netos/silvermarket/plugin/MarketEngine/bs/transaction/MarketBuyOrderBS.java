@@ -13,7 +13,9 @@ import cj.netos.dealmaking.stub.IDealmakingQueueStub;
 import cj.netos.silvermarket.args.BuyOrder;
 import cj.netos.silvermarket.bs.IMarketBalanceBS;
 import cj.netos.silvermarket.bs.IMarketBuyOrderBS;
+import cj.netos.silvermarket.bs.IMarketPropertiesBS;
 import cj.netos.silvermarket.plugin.MarketEngine.db.IMarketStore;
+import cj.netos.silvermarket.util.BigDecimalConstants;
 import cj.studio.ecm.CJSystem;
 import cj.studio.ecm.annotation.CjBridge;
 import cj.studio.ecm.annotation.CjService;
@@ -23,7 +25,7 @@ import cj.studio.gateway.stub.annotation.CjStubRef;
 
 @CjBridge(aspects = "@rest")
 @CjService(name = "transaction#marketBuyOrderBS")
-public class MarketBuyOrderBS implements IMarketBuyOrderBS {
+public class MarketBuyOrderBS implements IMarketBuyOrderBS,BigDecimalConstants {
 	@CjServiceRef
 	IMarketStore marketStore;
 
@@ -32,7 +34,8 @@ public class MarketBuyOrderBS implements IMarketBuyOrderBS {
 
 	@CjStubRef(remote = "rest://backend/dealmaking/", stub = IDealmakingQueueStub.class)
 	IDealmakingQueueStub dealmakingQueueStub;
-
+	@CjServiceRef
+	IMarketPropertiesBS marketPropertiesBS;
 	@Override
 	public Map<String, Object> buyOrder(String market, String buyer, BigDecimal amount,BigDecimal buyingPrice) throws CircuitException {
 		BuyOrder order = new BuyOrder();
@@ -50,6 +53,8 @@ public class MarketBuyOrderBS implements IMarketBuyOrderBS {
 		stock.setBuyingPrice(order.getBuyingPrice());
 		stock.setBuyorderno(order.getNo());
 		stock.setOtime(order.getOtime());
+		BigDecimal feeRate=defaultFreeRate(marketPropertiesBS, market);
+		stock.setFeeRate(feeRate);
 		try {
 			dealmakingQueueStub.putBuyingQueue(market, stock);
 		} catch (Exception e) {
