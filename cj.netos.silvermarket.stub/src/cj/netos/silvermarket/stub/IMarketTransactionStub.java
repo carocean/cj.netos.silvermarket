@@ -41,7 +41,7 @@ public interface IMarketTransactionStub {
 
 	@CjStubMethod(command = "post", usage = "委托承兑")
 	void exchangeOrder(@CjStubInParameter(key = "market", usage = "市场编号") String market,
-			@CjStubInParameter(key = "buyer", usage = "委托买方") String buyer,
+			@CjStubInParameter(key = "exchanger", usage = "委托承兑者") String exchanger,
 			@CjStubInContentKey(key = "stocks", elementType = Stock.class, type = ArrayList.class, usage = "要承兑的帑银") List<Stock> stocks,
 			@CjStubInParameter(key = "informAddress", usage = "回调通知地址") String informAddress);
 }

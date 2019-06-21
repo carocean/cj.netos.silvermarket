@@ -28,6 +28,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>cj.netos.silvermarket</groupId>
+      <artifactId>cj.netos.silvermarket.stub</artifactId>
+      <version>1.0.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>cj.studio.ecm</groupId>
       <artifactId>cj.studio.ecm.corelib</artifactId>
       <version>1.0.0</version>
@@ -66,12 +72,6 @@
     <dependency>
       <groupId>cj.studio.util.reactor</groupId>
       <artifactId>cj.studio.util.reactor.impl</artifactId>
-      <version>1.0.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>cj.netos.silvermarket</groupId>
-      <artifactId>cj.netos.silvermarket.stub</artifactId>
       <version>1.0.0</version>
       <scope>compile</scope>
     </dependency>

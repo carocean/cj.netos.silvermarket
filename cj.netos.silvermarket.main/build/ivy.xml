@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-  <info organisation="cj.netos.silvermarket" module="cj.netos.silvermarket.main" revision="1.0.0" status="integration" publication="20190610230435">
+  <info organisation="cj.netos.silvermarket" module="cj.netos.silvermarket.main" revision="1.0.0" status="integration" publication="20190621234254">
     <description/>
   </info>
   <configurations>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:m="http://ant.apache.org/ivy/maven">
-  <info organisation="cj.netos.silvermarket" module="cj.netos.silvermarket.plugin.MarketEngine" revision="1.0.0" status="integration" publication="20190610230438">
+  <info organisation="cj.netos.silvermarket" module="cj.netos.silvermarket.plugin.MarketEngine" revision="1.0.0" status="integration" publication="20190621234255">
     <description/>
   </info>
   <configurations>
@@ -23,6 +23,7 @@
     <dependency org="cj.studio.gateway2" name="cj.studio.gateway.socket" rev="1.0.0" conf="compile-&gt;default"/>
     <dependency org="cj.studio.gateway2" name="cj.studio.gateway.stub" rev="1.0.0" conf="compile-&gt;default"/>
     <dependency org="cj.studio.backend.uc" name="cj.studio.backend.uc.stub" rev="1.0.0" conf="compile-&gt;default"/>
+    <dependency org="cj.netos.dealmaking" name="cj.netos.dealmaking.stub" rev="1.0.0" conf="compile-&gt;default"/>
     <dependency org="cj.studio.gateway2" name="cj.studio.orm.mongodb" rev="1.0.0" conf="compile-&gt;default"/>
     <dependency org="io.jsonwebtoken" name="jjwt" rev="0.9.1" conf="compile-&gt;default"/>
     <dependency org="cj.netos.silvermarket" name="cj.netos.silvermarket.stub" rev="1.0.0" conf="compile-&gt;default"/>
